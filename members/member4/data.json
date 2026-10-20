@@ -1,0 +1,9 @@
+{
+  "_readme": "OWNER: member4 · THE inventory book (data, not code). Copy the shape of the example rows EXACTLY (same keys, commas in the right places). One wrong comma breaks the whole site — after editing, validate: python3 -c \"import json;json.load(open('members/member4/data.json'))\". Rules: products ids unique; movements.product_id must match a product id; qty positive = stock-IN, negative = sold/damaged; low stock means stock <= threshold.",
+  "products": [
+    { "id": 1, "name": "EXAMPLE White Rice 5kg", "sku": "RC-005", "price": 9500, "stock": 12, "threshold": 10, "supplier": "Abuja Foods Ltd" }
+  ],
+  "movements": [
+    { "id": 1, "product_id": 1, "qty": -2, "reason": "sold", "by": "member1", "date": "2026-10-15" }
+  ]
+}
