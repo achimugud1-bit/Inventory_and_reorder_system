@@ -1,0 +1,253 @@
+/* Owner: Mr. Daniel · shared appearance for the main page and reports. */
+:root {
+  color-scheme: light;
+  --green: #166534;
+  --line: #dce7df;
+  --muted: #64746a;
+}
+
+/* Use one box model and a calm page background throughout the app. */
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 24px;
+  background: #f5f8f6;
+  color: #17251c;
+  font: 15px/1.5 system-ui, sans-serif;
+}
+
+/* Keep the main content centered and readable on wide screens. */
+header {
+  margin: 0 auto 18px;
+  max-width: 1100px;
+}
+
+main {
+  max-width: 1100px;
+  margin: auto;
+}
+
+h1 {
+  font-size: 26px;
+  letter-spacing: -.4px;
+}
+
+h2 {
+  margin: 0 0 12px;
+  font-size: 17px;
+}
+
+a {
+  color: var(--green);
+}
+
+.mut {
+  color: var(--muted);
+  font-size: 13px;
+}
+
+.panel {
+  margin-bottom: 14px;
+  padding: 16px;
+  background: white;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  box-shadow: 0 2px 8px #1432230a;
+}
+
+/* Forms wrap onto new lines when the screen is narrow. */
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.row input,
+.row select {
+  flex: 1;
+  min-width: 130px;
+}
+
+input,
+select {
+  padding: 9px 10px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: white;
+  font: inherit;
+}
+
+input:focus,
+select:focus {
+  outline: 2px solid #22a653;
+  outline-offset: 1px;
+}
+
+button {
+  padding: 9px 14px;
+  border: 0;
+  border-radius: 8px;
+  background: #16a34a;
+  color: white;
+  font: inherit;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+button:hover {
+  background: var(--green);
+}
+
+button.ghost {
+  background: #edf4ef;
+  color: var(--green);
+}
+
+/* Shared table styling for inventory and report pages. */
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+th,
+td {
+  padding: 8px 10px;
+  border-bottom: 1px solid var(--line);
+  text-align: left;
+  font-size: 14px;
+}
+
+th {
+  background: #eef4ef;
+  color: var(--green);
+  font-size: 11px;
+  letter-spacing: .5px;
+  text-transform: uppercase;
+}
+
+tr:last-child td {
+  border-bottom: 0;
+}
+
+.tag {
+  padding: 2px 8px;
+  border-radius: 999px;
+  font-size: 11px;
+  font-weight: 700;
+}
+
+.tag.low {
+  background: #f8dfdc;
+  color: #a6322b;
+}
+
+.tag.ok {
+  background: #dff4e9;
+  color: #146441;
+}
+
+.alert {
+  padding: 8px 12px;
+  border: 1px solid #f3deb4;
+  border-radius: 10px;
+  background: #fff1d8;
+  color: #a76509;
+}
+
+.live-alert {
+  padding: 10px 12px;
+  border-left: 4px solid #c0463f;
+  border-radius: 6px;
+  background: #fff1d8;
+  color: #8f2e28;
+  font-weight: 700;
+}
+
+.app-status {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin: 0 0 14px;
+  padding: 6px 11px;
+  border-radius: 999px;
+  font-size: 13px;
+}
+
+.app-status::before {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: currentColor;
+  content: "";
+}
+
+.app-status.notice {
+  background: #e4f5e9;
+  color: #14532d;
+}
+
+.app-status.connecting {
+  background: #eef2f0;
+  color: #52645a;
+}
+
+.app-status.connecting::before {
+  animation: pulse 1.2s infinite;
+}
+
+.app-status.alert {
+  background: #fff1d8;
+  color: #a76509;
+}
+
+@keyframes pulse {
+  50% {
+    opacity: .3;
+  }
+}
+
+#alert-list {
+  padding-left: 20px;
+}
+
+/* Stack form fields and allow tables to scroll on small screens. */
+@media (max-width: 600px) {
+  body {
+    padding: 12px;
+  }
+
+  .row input,
+  .row select {
+    min-width: 100%;
+  }
+
+  .panel {
+    padding: 12px;
+    overflow-x: auto;
+  }
+
+  table {
+    min-width: 560px;
+  }
+}
+
+/* Hide controls and use a plain background on printed reports. */
+@media print {
+  body {
+    padding: 0;
+    background: white;
+  }
+
+  .mut,
+  button {
+    display: none;
+  }
+
+  .panel {
+    border: 0;
+    box-shadow: none;
+  }
+}

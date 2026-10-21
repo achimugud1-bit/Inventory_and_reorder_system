@@ -1,63 +1,49 @@
-# 📦 Inventory & Reorder System
-**Learn2Earn group project · 7 people · 7 files · 1 run file · HTML + Python only · zero installs**
+# Inventory & Reorder System
 
-Manage products, stock movements and low-stock notifications.
-Each person owns **exactly one file**. All seven files are **already linked** to `run.py` — nobody touches anyone else's wiring.
+A seven-person inventory project built with HTML, CSS, JavaScript, and Python. It tracks products, stock movements, and low-stock alerts. Browser changes are saved to a shared JSON file.
 
-## ▶ Run it
+## Run the project
+
+From this folder, start the server:
+
 ```bash
 python3 run.py
-# open http://localhost:8000        (main page)
-# open http://localhost:8000/reports (reports page)
-# second terminal, optional:
-#   python3 members/member5/report.py    → stock report in terminal
-#   python3 members/member6/notify.py    → low-stock notifications in terminal
 ```
-No pip. No database. No backend logic. Data lives in one JSON file.
 
-## 👥 Who owns what
-| File | Type | Owner | Their job (write ONLY inside their file) |
-|---|---|---|---|
-| `members/member1/app.js` | JS | member1 | ✅ finished example — wires forms & tables; others copy its spirit, not its code |
-| `members/member2/index.html` | HTML | member2 | the main page: sections, layout, headings (keep the ids + link/script tags) |
-| `members/member3/style.css` | CSS | member3 | all looks: colors, spacing, table style, tags |
-| `members/member4/data.json` | data | member4 | the inventory book: add/edit product & movement rows |
-| `members/member5/report.py` | Python | member5 | terminal stock report (WRITE HERE marks inside) |
-| `members/member6/notify.py` | Python | member6 | terminal low-stock notifications (WRITE HERE marks inside) |
-| `members/member7/reports.html` | HTML | member7 | printable reports page (one WRITE HERE render block) |
-| `run.py` | Python | **leader only** | the server. nobody else opens it |
+Open [http://localhost:8000](http://localhost:8000) for the inventory page or [http://localhost:8000/reports](http://localhost:8000/reports) for the stock report. Keep the server terminal open while using the app; press **Ctrl+C** to stop it.
 
-*Put real names on folders with:* `./rename.sh name2 name3 name4 name5 name6 name7`
+Optional terminal reports:
 
-## 🔗 The wiring (already done — read once, forget forever)
-- `index.html` already contains: `<link … member3/style.css>` and `<script … member1/app.js>`
-- `app.js` already fetches `member4/data.json`
-- `reports.html` already links member3's CSS and fetches member4's data
-- `run.py` already serves every folder and redirects `/` → index, `/reports` → reports
-- `report.py` / `notify.py` already find data.json by themselves
+```bash
+python3 members/david/report.py
+python3 members/sam/notify.py
+```
 
-**So each person opens ONE file and writes between the `═══ WRITE HERE ═══` marks. That's the entire collaboration model.**
+The notification script prints reorder suggestions; it does not send email.
 
-## 📋 The only contract (the agreements between files)
-`index.html` must keep these ids (app.js looks for them):
-`add-product` (form, inputs named name/sku/price/stock/threshold/supplier) · `product-rows` (tbody) · `alert-list` (ul) · `add-movement` (form) · `movement-product` (select) · `movement-rows` (tbody) · `export-data` (button)
+## File assignments
 
-`data.json` rows must keep this exact shape (copy an existing row):
-product = `{id, name, sku, price, stock, threshold, supplier}` · movement = `{id, product_id, qty, reason, by, date}`
-(`qty` positive = stock-in, negative = stock-out. Low stock = `stock <= threshold`.)
+| Member | Assigned file | Responsibility |
+|---|---|---|
+| Mr. Peter | `members/peter/app.js` | Browser behavior, saving changes, and live stock alerts |
+| Miss Thomas | `members/thomas/index.html` | Main page structure and forms |
+| Mr. Daniel | `members/daniel/style.css` | Shared page styling |
+| Cynthia | `members/cynthia/data.json` | Product and movement records |
+| David | `members/david/report.py` | Terminal stock report |
+| Mr. Sam | `members/sam/notify.py` | Terminal reorder suggestions |
+| Promise | `members/promise/reports.html` | Browser stock report |
 
-## 🔒 House rules (write these in the group chat too)
-1. **One file per person.** Not run.py, not someone else's file, not "just a quick fix".
-2. **No installs.** Python standard library + plain HTML/CSS/JS only.
-3. **Test before you share:** `python3 run.py` → look at your part. Python folks: run your file directly.
-4. **data.json edits get validated** (one wrong comma breaks the page):
-   `python3 -c "import json;json.load(open('members/member4/data.json'))"`
-5. Browser adds are **demo memory** — permanent changes go through member4 (or the Export button).
+`run.py` is maintained by the group leader. The links between pages, styles, scripts, and data are already set up.
 
-## 🆘 If something breaks
-| Symptom | Fix |
-|---|---|
-| Page shows "Could not load data.json" | server not running → `python3 run.py` |
-| Page shows nothing in tables | data.json has a JSON error → run the validate command above |
-| Port 8000 busy | leader changes `PORT` at top of run.py |
-| A section disappeared | someone removed an id from index.html → restore from git |
+## Keep the shared wiring working
+
+The main page must keep the IDs `add-product`, `product-rows`, `alert-list`, `add-movement`, `movement-product`, `movement-rows`, and `export-data`. The data file uses these shapes:
+
+- Product: `{id, name, sku, price, stock, threshold, supplier}`
+- Movement: `{id, product_id, qty, reason, by, date}`
+
+A positive movement quantity adds stock; a negative quantity removes stock. A product is low when its stock is at or below its threshold. Validate JSON edits with:
+
+```bash
+python3 -c "import json; json.load(open('members/cynthia/data.json'))"
+```

@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<!-- Owner: Miss Thomas. Keep the IDs because app.js uses them. -->
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Inventory &amp; Reorder System</title>
+    <!-- Shared styles are maintained by Mr. Daniel. -->
+    <link rel="stylesheet" href="/members/daniel/style.css">
+  </head>
+  <body>
+    <header>
+      <h1>📦 Inventory &amp; Reorder System</h1>
+      <p class="mut">Manage stock · <a href="/reports">View reports →</a></p>
+    </header>
+
+    <main>
+      <!-- Connection and low-stock messages are updated by app.js. -->
+      <p id="app-message" class="app-status connecting" role="status" aria-live="polite">
+        Connecting…
+      </p>
+      <section class="panel">
+        <h2>⚠️ Live low-stock alerts</h2>
+        <p class="mut">Updates automatically every 5 seconds.</p>
+        <p id="live-alert" class="live-alert" role="alert" aria-live="assertive" hidden></p>
+        <ul id="alert-list" aria-live="polite"><li>Loading…</li></ul>
+      </section>
+
+      <!-- Product fields must keep the names read by app.js. -->
+      <section class="panel">
+        <h2>Add a product</h2>
+        <form class="row" id="add-product">
+          <input name="name" placeholder="Product name *" required>
+          <input name="sku" placeholder="SKU">
+          <input name="price" type="number" min="0" step="0.01" placeholder="Price">
+          <input name="stock" type="number" min="0" placeholder="Stock">
+          <input name="threshold" type="number" min="0" placeholder="Low-stock threshold">
+          <input name="supplier" placeholder="Supplier">
+          <button type="submit">Add product</button>
+        </form>
+      </section>
+
+      <section class="panel">
+        <h2>Products</h2>
+        <table>
+          <thead>
+            <tr>
+              <th>#</th><th>Product</th><th>Stock</th>
+              <th>Threshold</th><th>Price</th><th>Supplier</th>
+            </tr>
+          </thead>
+          <tbody id="product-rows"></tbody>
+        </table>
+        <p class="mut">
+          Inventory changes are saved to the shared data file. You can also download a backup.
+          <button id="export-data" class="ghost" type="button">Download backup</button>
+        </p>
+      </section>
+
+      <!-- Positive quantities add stock; negative quantities remove it. -->
+      <section class="panel">
+        <h2>Record a stock movement</h2>
+        <form class="row" id="add-movement">
+          <select id="movement-product" name="product_id" aria-label="Product"></select>
+          <input name="qty" type="number" placeholder="+ restock / − sold or damaged" required>
+          <input name="reason" placeholder="Reason">
+          <input name="by" placeholder="Your name">
+          <button type="submit">Record</button>
+        </form>
+        <table>
+          <thead>
+            <tr><th>Date</th><th>Product</th><th>Qty</th><th>Reason</th><th>By</th></tr>
+          </thead>
+          <tbody id="movement-rows"></tbody>
+        </table>
+      </section>
+    </main>
+
+    <!-- Browser behavior is maintained by Mr. Peter. -->
+    <script src="/members/peter/app.js"></script>
+  </body>
+</html>

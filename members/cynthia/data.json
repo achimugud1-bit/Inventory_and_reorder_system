@@ -1,0 +1,161 @@
+{
+  "_readme": "OWNER: Cynthia · THE inventory book. Keep this exact shape when adding rows (same keys, commas right). Validate after editing: python3 -c \"import json;json.load(open('members/cynthia/data.json'))\". qty: + restock, − sold/damaged. Low stock = stock <= threshold.",
+  "products": [
+    {
+      "id": 1,
+      "name": "White Rice 5kg",
+      "sku": "RC-005",
+      "price": 9500,
+      "stock": 17,
+      "threshold": 10,
+      "supplier": "Abuja Foods Ltd"
+    },
+    {
+      "id": 2,
+      "name": "Groundnut Oil 1L",
+      "sku": "OL-001",
+      "price": 2800,
+      "stock": 4,
+      "threshold": 8,
+      "supplier": "Abuja Foods Ltd"
+    },
+    {
+      "id": 3,
+      "name": "Spaghetti Pack",
+      "sku": "SP-012",
+      "price": 1200,
+      "stock": 30,
+      "threshold": 12,
+      "supplier": "Mama Gold Dist."
+    },
+    {
+      "id": 4,
+      "name": "Tin Milk (12 pack)",
+      "sku": "MK-012",
+      "price": 7800,
+      "stock": 6,
+      "threshold": 6,
+      "supplier": "Mama Gold Dist."
+    },
+    {
+      "id": 5,
+      "name": "Candle - Midnight Cedar",
+      "sku": "LW-001",
+      "price": 28,
+      "stock": 3,
+      "threshold": 5,
+      "supplier": "LumenWick Studio"
+    },
+    {
+      "id": 6,
+      "name": "Detergent 900g",
+      "sku": "DT-900",
+      "price": 1600,
+      "stock": 25,
+      "threshold": 10,
+      "supplier": "CleanCo"
+    },
+    {
+      "id": 7,
+      "name": "Beans 1kg",
+      "sku": "BN-001",
+      "price": 2200,
+      "stock": 9,
+      "threshold": 9,
+      "supplier": "Abuja Foods Ltd"
+    },
+    {
+      "id": 8,
+      "name": "Bottled Water (6 pack)",
+      "sku": "WT-006",
+      "price": 1500,
+      "stock": 40,
+      "threshold": 15,
+      "supplier": "CleanCo"
+    },
+    {
+      "id": 9,
+      "name": "T-shirt",
+      "sku": "RC-283",
+      "price": 6500.0,
+      "stock": 4,
+      "threshold": 10,
+      "supplier": "member2"
+    },
+    {
+      "id": 10,
+      "name": "Phones",
+      "sku": "GN-001",
+      "price": 150000.0,
+      "stock": 5,
+      "threshold": 7,
+      "supplier": "cynthia"
+    }
+  ],
+  "movements": [
+    {
+      "id": 1,
+      "product_id": 2,
+      "qty": -2,
+      "reason": "sold",
+      "by": "Mr. Peter",
+      "date": "2026-10-15"
+    },
+    {
+      "id": 2,
+      "product_id": 3,
+      "qty": 10,
+      "reason": "restock",
+      "by": "Mr. Peter",
+      "date": "2026-10-16"
+    },
+    {
+      "id": 3,
+      "product_id": 5,
+      "qty": -2,
+      "reason": "damaged",
+      "by": "Mr. Peter",
+      "date": "2026-10-16"
+    },
+    {
+      "id": 4,
+      "product_id": 7,
+      "qty": -6,
+      "reason": "sold",
+      "by": "Mr. Peter",
+      "date": "2026-10-17"
+    },
+    {
+      "id": 5,
+      "product_id": 8,
+      "qty": 20,
+      "reason": "restock",
+      "by": "Mr. Peter",
+      "date": "2026-10-18"
+    },
+    {
+      "id": 6,
+      "product_id": 1,
+      "qty": -2,
+      "reason": "sold",
+      "by": "cyn",
+      "date": "2026-10-20"
+    },
+    {
+      "id": 7,
+      "product_id": 1,
+      "qty": -3,
+      "reason": "sold",
+      "by": "me",
+      "date": "2026-10-20"
+    },
+    {
+      "id": 8,
+      "product_id": 1,
+      "qty": 10,
+      "reason": "restock",
+      "by": "me",
+      "date": "2026-10-20"
+    }
+  ]
+}
