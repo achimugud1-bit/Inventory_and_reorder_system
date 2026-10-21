@@ -1,4 +1,4 @@
-# Owner: Mr. Sam · run with: python3 members/sam/notify.py
+# Owner: Miss Thomas · run with: python3 members/thomas/notify.py
 # This prints reorder suggestions; it does not send email or messages.
 import json
 from pathlib import Path

@@ -16,7 +16,7 @@ Optional terminal reports:
 
 ```bash
 python3 members/david/report.py
-python3 members/sam/notify.py
+python3 members/thomas/notify.py
 ```
 
 The notification script prints reorder suggestions; it does not send email.
@@ -26,11 +26,11 @@ The notification script prints reorder suggestions; it does not send email.
 | Member | Assigned file | Responsibility |
 |---|---|---|
 | Mr. Peter | `members/peter/app.js` | Browser behavior, saving changes, and live stock alerts |
-| Miss Thomas | `members/thomas/index.html` | Main page structure and forms |
+| Mr. Sam | `members/sam/index.html` | Main page structure and forms |
 | Mr. Daniel | `members/daniel/style.css` | Shared page styling |
 | Cynthia | `members/cynthia/data.json` | Product and movement records |
 | David | `members/david/report.py` | Terminal stock report |
-| Mr. Sam | `members/sam/notify.py` | Terminal reorder suggestions |
+| Miss Thomas | `members/thomas/notify.py` | Terminal reorder suggestions |
 | Promise | `members/promise/reports.html` | Browser stock report |
 
 `run.py` is maintained by the group leader. The links between pages, styles, scripts, and data are already set up.

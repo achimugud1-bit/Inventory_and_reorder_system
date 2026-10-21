@@ -16,8 +16,8 @@ git push -u origin main
 git clone <repo-url> && cd inventory-reorder-system
 # ✍️ open YOUR assigned file (see README table)
 python3 run.py                 # html/css/js people: check http://localhost:8000
-python3 members/david/report.py  # David: terminal stock report
-python3 members/sam/notify.py    # Mr. Sam: reorder suggestions
+python3 members/david/report.py    # David: terminal stock report
+python3 members/thomas/notify.py   # Miss Thomas: reorder suggestions
 git add members/<your-folder> && git commit -m "<you>: <what changed>" && git push
 ```
 If two people must edit the same day: push early, pull before you push (`git pull`), and if git complains about a conflict — call the leader, that's what leaders are for.
