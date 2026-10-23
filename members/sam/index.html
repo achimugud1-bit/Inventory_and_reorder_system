@@ -1,11 +1,10 @@
 <!DOCTYPE html>
-<!-- Owner: Mr. Sam. Keep the IDs because app.js uses them. -->
+<!-- Sam: main inventory page structure. -->
 <html lang="en">
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Inventory &amp; Reorder System</title>
-    <!-- Shared styles are maintained by Mr. Daniel. -->
     <link rel="stylesheet" href="/members/daniel/style.css">
   </head>
   <body>
@@ -13,18 +12,12 @@
       <h1>📦 Inventory &amp; Reorder System</h1>
       <p class="mut">Manage stock</p>
     </header>
-
     <main>
-      <!-- Connection and low-stock messages are updated by app.js. -->
-      <p id="app-message" class="app-status connecting" role="status" aria-live="polite">
-        Connecting…
-      </p>
+      <p id="app-message" class="app-status connecting" role="status" aria-live="polite">Loading inventory…</p>
       <section class="panel">
         <h2>⚠️ Low-stock alerts</h2>
         <ul id="alert-list" aria-live="polite"><li>Loading…</li></ul>
       </section>
-
-      <!-- Product fields must keep the names read by app.js. -->
       <section class="panel">
         <h2>Add a product</h2>
         <form class="row" id="add-product">
@@ -37,22 +30,14 @@
           <button type="submit">Add product</button>
         </form>
       </section>
-
       <section class="panel">
         <h2>Products</h2>
         <table>
-          <thead>
-            <tr>
-              <th>#</th><th>Product</th><th>Stock</th>
-              <th>Threshold</th><th>Price</th><th>Supplier</th>
-            </tr>
-          </thead>
+          <thead><tr><th>#</th><th>Product</th><th>Stock</th><th>Threshold</th><th>Price</th><th>Supplier</th></tr></thead>
           <tbody id="product-rows"></tbody>
         </table>
         <p class="mut">Inventory changes are saved to the shared data file.</p>
       </section>
-
-      <!-- Positive quantities add stock; negative quantities remove it. -->
       <section class="panel">
         <h2>Record a stock movement</h2>
         <form class="row" id="add-movement">
@@ -63,15 +48,11 @@
           <button type="submit">Record</button>
         </form>
         <table>
-          <thead>
-            <tr><th>Date</th><th>Product</th><th>Qty</th><th>Reason</th><th>By</th></tr>
-          </thead>
+          <thead><tr><th>Date</th><th>Product</th><th>Qty</th><th>Reason</th><th>By</th></tr></thead>
           <tbody id="movement-rows"></tbody>
         </table>
       </section>
     </main>
-
-    <!-- Browser behavior is maintained by Mr. Peter. -->
-    <script src="/members/peter/app.js"></script>
+    <script type="module" src="/members/peter/app.js"></script>
   </body>
 </html>

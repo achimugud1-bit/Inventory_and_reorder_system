@@ -1,0 +1,20 @@
+/* Daniel: make forms and tables fit small screens. */
+@media (max-width: 600px) {
+  body {
+    padding: 12px;
+  }
+
+  .row input,
+  .row select {
+    min-width: 100%;
+  }
+
+  .panel {
+    padding: 12px;
+    overflow-x: auto;
+  }
+
+  table {
+    min-width: 560px;
+  }
+}
