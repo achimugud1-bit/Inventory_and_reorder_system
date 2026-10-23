@@ -1,4 +1,4 @@
-/* Owner: Mr. Daniel · shared appearance for the main page and reports. */
+/* Owner: Mr. Daniel · shared appearance for the inventory page. */
 :root {
   color-scheme: light;
   --green: #166534;
@@ -101,12 +101,7 @@ button:hover {
   background: var(--green);
 }
 
-button.ghost {
-  background: #edf4ef;
-  color: var(--green);
-}
-
-/* Shared table styling for inventory and report pages. */
+/* Shared table styling for the inventory page. */
 table {
   width: 100%;
   border-collapse: collapse;
@@ -155,15 +150,6 @@ tr:last-child td {
   border-radius: 10px;
   background: #fff1d8;
   color: #a76509;
-}
-
-.live-alert {
-  padding: 10px 12px;
-  border-left: 4px solid #c0463f;
-  border-radius: 6px;
-  background: #fff1d8;
-  color: #8f2e28;
-  font-weight: 700;
 }
 
 .app-status {
@@ -234,20 +220,3 @@ tr:last-child td {
   }
 }
 
-/* Hide controls and use a plain background on printed reports. */
-@media print {
-  body {
-    padding: 0;
-    background: white;
-  }
-
-  .mut,
-  button {
-    display: none;
-  }
-
-  .panel {
-    border: 0;
-    box-shadow: none;
-  }
-}

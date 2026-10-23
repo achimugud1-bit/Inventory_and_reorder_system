@@ -1,7 +1,5 @@
 // Peter's browser code: display inventory and send form changes to Python.
 let DB = { products: [], movements: [], orders: [] };
-let ready = false;
-let alertTimer;
 const $ = id => document.getElementById(id);
 
 // Escape inventory text before inserting it into the page.
@@ -45,24 +43,13 @@ function render() {
 }
 
 function update(data, orders) {
-  const previous = new Set(DB.orders.map(item => item.id));
   DB = { ...data, orders };
   delete DB._readme;
   render();
-
-  const newlyLow = ready && orders.filter(item => !previous.has(item.id));
-  if (newlyLow?.length) {
-    const alert = $("live-alert");
-    alert.textContent = `New low-stock alert: ${newlyLow.map(item => `${item.name} (${item.stock} left)`).join(", ")}`;
-    alert.hidden = false;
-    clearTimeout(alertTimer);
-    alertTimer = setTimeout(() => { alert.hidden = true; }, 8000);
-  }
-  ready = true;
 }
 
 // Get inventory data and reorder suggestions from the Python server.
-async function refresh(showStatus = false) {
+async function refresh() {
   const [inventoryResponse, ordersResponse] = await Promise.all([
     fetch("/members/cynthia/data.json", { cache: "no-store" }),
     fetch("/api/orders", { cache: "no-store" }),
@@ -71,7 +58,7 @@ async function refresh(showStatus = false) {
   const inventory = await readJson(inventoryResponse);
   const { orders } = await readJson(ordersResponse);
   update(inventory, orders);
-  if (showStatus) message("Live updates · every 5 sec");
+  message("Inventory loaded.");
 }
 
 async function save(url, values, form, success) {
@@ -102,15 +89,4 @@ function connectForm(id, url, fields, success) {
 connectForm("add-product", "/api/products", ["price", "stock", "threshold"], "Product saved.");
 connectForm("add-movement", "/api/movements", ["product_id", "qty"], "Stock movement saved.");
 
-// Download a copy of the inventory as JSON.
-$("export-data").addEventListener("click", () => {
-  const backup = { products: DB.products, movements: DB.movements };
-  const file = new Blob([JSON.stringify(backup, null, 2)], { type: "application/json" });
-  const url = URL.createObjectURL(file);
-  const link = Object.assign(document.createElement("a"), { href: url, download: "data.json" });
-  link.click();
-  URL.revokeObjectURL(url);
-});
-
-refresh(true).catch(error => message(`${error.message} Start with python3 run.py.`, true));
-setInterval(() => refresh().catch(() => message("Live updates paused. Check the server.", true)), 5000);
+refresh().catch(error => message(`${error.message} Start with python3 run.py.`, true));

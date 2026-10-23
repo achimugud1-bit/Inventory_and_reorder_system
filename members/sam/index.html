@@ -11,7 +11,7 @@
   <body>
     <header>
       <h1>📦 Inventory &amp; Reorder System</h1>
-      <p class="mut">Manage stock · <a href="/reports">View reports →</a></p>
+      <p class="mut">Manage stock</p>
     </header>
 
     <main>
@@ -20,9 +20,7 @@
         Connecting…
       </p>
       <section class="panel">
-        <h2>⚠️ Live low-stock alerts</h2>
-        <p class="mut">Updates automatically every 5 seconds.</p>
-        <p id="live-alert" class="live-alert" role="alert" aria-live="assertive" hidden></p>
+        <h2>⚠️ Low-stock alerts</h2>
         <ul id="alert-list" aria-live="polite"><li>Loading…</li></ul>
       </section>
 
@@ -51,10 +49,7 @@
           </thead>
           <tbody id="product-rows"></tbody>
         </table>
-        <p class="mut">
-          Inventory changes are saved to the shared data file. You can also download a backup.
-          <button id="export-data" class="ghost" type="button">Download backup</button>
-        </p>
+        <p class="mut">Inventory changes are saved to the shared data file.</p>
       </section>
 
       <!-- Positive quantities add stock; negative quantities remove it. -->

@@ -43,8 +43,8 @@ class Handler(SimpleHTTPRequestHandler):
                 inventory = json.loads(DATA_FILE.read_text(encoding="utf-8"))
             return self.send_json(200, {"orders": build_order_draft(inventory["products"])})
 
-        # Give the two main pages short, easy-to-remember URLs.
-        pages = {"/": "index.html", "/reports": "reports.html"}
+        # Give the main page a short, easy-to-remember URL.
+        pages = {"/": "index.html"}
         if self.path in pages:
             page = next(MEMBERS.glob(f"*/{pages[self.path]}"), None)
             if page:
@@ -148,6 +148,5 @@ class Handler(SimpleHTTPRequestHandler):
 
 if __name__ == "__main__":
     print(f"Inventory & Reorder System: http://localhost:{PORT}")
-    print(f"Reports: http://localhost:{PORT}/reports")
     print("Stop with Ctrl+C")
     ThreadingHTTPServer(("127.0.0.1", PORT), Handler).serve_forever()
