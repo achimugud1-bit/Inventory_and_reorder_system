@@ -6,27 +6,33 @@ An inventory project built with HTML, CSS, JavaScript, and Python. It tracks pro
 
 From this folder, start the server:
 
-    python3 run.py
+```bash
+python3 run.py
+```
 
-Open http://localhost:8000. Keep the server terminal open while using the app; press Ctrl+C to stop it.
+Open [http://localhost:8000](http://localhost:8000) for the inventory page. Keep the server terminal open while using the app; press **Ctrl+C** to stop it.
 
-## Seven member assignments
+## File assignments
 
-| Member | File to work on | What it handles |
+| Member | Assigned file | Responsibility |
 |---|---|---|
-| Mr. Peter | members/peter/app.js, api.js, view.js | Browser logic, data requests, and display |
-| Mr. Sam | members/sam/index.html | Main page and forms |
-| Mr. Daniel | members/daniel/style.css and CSS helper files | Page appearance |
-| Cynthia | members/cynthia/data.json | Product and movement data |
-| David | members/david/storage.py | Loading and safely saving inventory |
-| Mr. Thomas | members/thomas/records.py | Product and movement validation |
-| Promise | order.py | Low-stock reorder suggestions |
+| Mr. Peter | `members/peter/app.js` | Page behavior, form saves, and low-stock list |
+| Mr. Sam | `members/sam/index.html` | Main page structure and forms |
+| Mr. Daniel | `members/daniel/style.css` | Shared page styling |
+| Cynthia | `members/cynthia/data.json` | Product and movement records |
+| Shared | `order.py` | Reorder calculations used by the low-stock list |
 
-run.py connects the server to these modules. The short parent files remain in place as entry points.
+`run.py` is maintained by the group leader. It calls `order.py` for reorder calculations.
 
-## Shared data shapes
+## Keep the shared wiring working
 
-- Product: {id, name, sku, price, stock, threshold, supplier}
-- Movement: {id, product_id, qty, reason, by, date}
+The main page must keep the IDs `add-product`, `product-rows`, `alert-list`, `add-movement`, `movement-product`, `movement-rows`. The data file uses these shapes:
 
-A positive movement adds stock; a negative movement removes stock. Stock is low when it is at or below its threshold.
+- Product: `{id, name, sku, price, stock, threshold, supplier}`
+- Movement: `{id, product_id, qty, reason, by, date}`
+
+A positive movement quantity adds stock; a negative quantity removes stock. A product is low when its stock is at or below its threshold. Validate JSON edits with:
+
+```bash
+python3 -c "import json; json.load(open('members/cynthia/data.json'))"
+```
