@@ -4,7 +4,7 @@ import json
 import threading
 from pathlib import Path
 
-ROOT = Path(__file__).resolve().parent
+ROOT = Path(__file__).resolve().parents[2]
 MEMBERS = ROOT / "members"
 DATA_FILE = next(MEMBERS.glob("*/data.json"))
 DATA_LOCK = threading.Lock()

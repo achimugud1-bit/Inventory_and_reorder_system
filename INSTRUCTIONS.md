@@ -21,7 +21,7 @@ git add members/<your-folder> && git commit -m "<you>: <what changed>" && git pu
 If two people must edit the same day: push early, pull before you push (`git pull`), and if git complains about a conflict — call the leader, that's what leaders are for.
 
 ## 3 · Writing inside your file (10-minute tutorial, any role)
-1. Open `members/peter/app.js` once to see how the browser app connects to the Python server.
+1. Open `members/peter/app.js` to see how the browser app connects to the Python server. Promise owns `members/promise/forms.js`.
 2. Open your assigned file from the README table and follow its existing structure and comments.
 3. Keep the filenames, page IDs, and data fields that other files rely on.
 4. Test (step 2 above). Break it locally, fix it locally, then push.

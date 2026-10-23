@@ -16,13 +16,15 @@ Open [http://localhost:8000](http://localhost:8000) for the inventory page. Keep
 
 | Member | Assigned file | Responsibility |
 |---|---|---|
-| Mr. Peter | `members/peter/app.js` | Page behavior, form saves, and low-stock list |
+| Mr. Peter | `members/peter/app.js` | Inventory loading and page entry point |
 | Mr. Sam | `members/sam/index.html` | Main page structure and forms |
-| Mr. Daniel | `members/daniel/style.css` | Shared page styling |
+| Promise | `members/promise/forms.js` | Product and stock form submissions |
+| Mr. Daniel | `members/daniel/storage.py`, `style.css` | Inventory storage and shared page styling |
+| David | `members/david/inventory.py` | Product and stock movement updates |
+| Thomas | `members/thomas/order.py` | Reorder calculations |
 | Cynthia | `members/cynthia/data.json` | Product and movement records |
-| Shared | `order.py` | Reorder calculations used by the low-stock list |
 
-`run.py` is maintained by the group leader. It calls `order.py` for reorder calculations.
+`run.py` connects the page to the member-owned Python modules.
 
 ## Keep the shared wiring working
 

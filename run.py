@@ -4,9 +4,9 @@
 import json
 from http.server import SimpleHTTPRequestHandler, ThreadingHTTPServer
 
-from inventory import InventoryError, update_inventory
-from order import build_order_draft
-from storage import DATA_LOCK, MEMBERS, ROOT, load_data, save_data
+from members.david.inventory import InventoryError, update_inventory
+from members.thomas.order import build_order_draft
+from members.daniel.storage import DATA_LOCK, MEMBERS, ROOT, load_data, save_data
 
 PORT = 8000
 
