@@ -6,6 +6,7 @@ import threading
 from datetime import date
 from http.server import SimpleHTTPRequestHandler, ThreadingHTTPServer
 from pathlib import Path
+from order import build_order_draft
 
 ROOT = Path(__file__).resolve().parent
 MEMBERS = ROOT / "members"
@@ -36,6 +37,12 @@ class Handler(SimpleHTTPRequestHandler):
         super().end_headers()
 
     def do_GET(self):
+        # Keep reorder calculations in order.py, outside the page code.
+        if self.path == "/api/orders":
+            with DATA_LOCK:
+                inventory = json.loads(DATA_FILE.read_text(encoding="utf-8"))
+            return self.send_json(200, {"orders": build_order_draft(inventory["products"])})
+
         # Give the two main pages short, easy-to-remember URLs.
         pages = {"/": "index.html", "/reports": "reports.html"}
         if self.path in pages:
